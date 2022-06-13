@@ -40,18 +40,14 @@ akbarvpnnnnnnnnn="raw.githubusercontent.com/p4p4l3o/sc/main/websocket"
 akbarvpnnnnnnnnnn="raw.githubusercontent.com/p4p4l3o/sc/main/ohp"
 
 # Getting
-MYIP=$(wget -qO- icanhazip.com);
-IZIN=$( curl https://p4p4l3o.github.io/izin | grep $MYIP )
-echo "Memeriksa Hak Akses VPS..."
-if [ $MYIP = $IZIN ]; then
+MYIP=$(wget -qO- ipinfo.io/ip);
+echo "Checking VPS"
+IZIN=$(wget -qO- ipinfo.io/ip);
+
+rm -f setup.sh
 clear
-echo -e "${CYAN}Akses Diizinkan...${off}"
-sleep 1
-else
-clear
-echo -e "${PURPLE}Akses Diblokir!${off}"
-echo "Hanya Untuk Pengguna Berbayar!"
-echo "Silahkan Hubungi Admin"
+if [ -f "/etc/xray/domain" ]; then
+echo "Script Already Installed"
 exit 0
 fi
 clear
